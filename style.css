@@ -65,7 +65,37 @@ article {
   gap: 0.25rem;
   position: relative;
 }
-
+article:is(:hover, :focus-visible) {
+  z-index: 2;
+}
+.glows {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  filter: blur(calc(var(--blur) * 1px));
+}
+.glows::after,
+.glows::before {
+  --alpha: 0;
+  content: "";
+  background: var(--gradient);
+  background-attachment: fixed;
+  position: absolute;
+  inset: -5px;
+  border: 10px solid transparent;
+  border-radius: var(--border-radius);
+  mask: linear-gradient(#0000, #0000),
+    conic-gradient(
+      from calc((var(--start) - (var(--spread) * 0.5)) * 1deg),
+      #000 0deg,
+      #fff,
+      #0000 calc(var(--spread) * 1deg)
+    );
+  mask-composite: intersect;
+  mask-clip: padding-box, border-box;
+  opacity: var(--active);
+  transition: opacity 1s;
+}
 .header {
   position: relative;
   flex: 1;
@@ -92,4 +122,7 @@ article {
 }
 .header svg:nth-of-type(4) {
   --index: 3;
+}
+.badge svg {
+  width: 16px;
 }
