@@ -92,6 +92,7 @@ article:is(:hover, :focus-visible) {
       #0000 calc(var(--spread) * 1deg)
     );
   mask-composite: intersect;
+  mask-composite: source-in, xor;
   mask-clip: padding-box, border-box;
   opacity: var(--active);
   transition: opacity 1s;
@@ -119,6 +120,7 @@ article::before {
     );
   mask-clip: padding-box, border-box;
   mask-composite: intersect;
+  mask-composite: source-in, xor;
   opacity: var(--active);
   transition: opacity 1s;
 }
@@ -149,6 +151,7 @@ article::after {
   filter: brightness(1.5);
   mask-clip: padding-box, border-box;
   mask-composite: intersect;
+  mask-composite: source-in, xor;
 }
 .badge {
   border: 2px solid var(--border);
@@ -212,4 +215,3 @@ article h2 {
 .dg.ac {
   z-index: 99999 !important;
 }
-
